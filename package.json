@@ -1,19 +1,20 @@
 {
   "name": "@mfields/tree",
-  "version": "1.0.0",
+  "version": "0.0.0-development",
   "description": "Create immutable tree instances.",
   "main": "./dist/tree.cjs.js",
   "scripts": {
     "build": "npm run bundle && npm run doc",
     "bundle": "NODE_ENV=production ./node_modules/.bin/rollup -c",
     "doc": "jsdoc2md ./src/private.js --no-gfm > ./doc/api.md",
-    "test": "NODE_ENV=test jest && standard",
+    "test": "NODE_ENV=test jest --coverage && standard",
     "test:mac": "karma start ./karma/mac.js",
-    "test:win": "karma ./karma/win.js"
+    "test:win": "karma ./karma/win.js",
+    "semantic-release": "semantic-release"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mfields/jsTree.git"
+    "url": "https://github.com/mfields/jsTree.git"
   },
   "keywords": [
     "tree"
@@ -33,6 +34,7 @@
     "@rollup/plugin-node-resolve": "^8.4.0",
     "babel-jest": "^26.3.0",
     "core-js": "^3.6.5",
+    "cz-conventional-changelog": "3.2.0",
     "jasmine": "3.6.1",
     "jasmine-core": "^3.6.0",
     "jest": "26.3.0",
@@ -48,6 +50,7 @@
     "karma-safari-launcher": "^1.0.0",
     "rollup": "^2.23.1",
     "rollup-plugin-terser": "^6.1.0",
+    "semantic-release": "^17.1.1",
     "standard": "14.3.4"
   },
   "babel": {
@@ -62,6 +65,19 @@
   "jest": {
     "transform": {
       "^.+\\.js?$": "babel-jest"
+    },
+    "coverageDirectory": "./coverage/",
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "src/private.js"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 83,
+        "functions": 83,
+        "lines": 83,
+        "statements": 83
+      }
     }
   },
   "standard": {
@@ -69,5 +85,10 @@
       "test/",
       "dist/"
     ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }

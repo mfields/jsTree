@@ -13,7 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/chimerablog/jsTree.git"
+    "url": "git+https://github.com/mfields/jsTree.git"
   },
   "keywords": [
     "tree"
@@ -21,9 +21,9 @@
   "author": "Michael Fields",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/chimerablog/jsTree/issues"
+    "url": "https://github.com/mfields/jsTree/issues"
   },
-  "homepage": "https://github.com/chimerablog/jsTree#readme",
+  "homepage": "https://github.com/mfields/jsTree#readme",
   "devDependencies": {
     "@babel/cli": "^7.10.5",
     "@babel/core": "^7.11.1",

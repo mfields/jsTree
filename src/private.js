@@ -170,13 +170,13 @@ function Tree (config) {
   Object.freeze(Object.getPrototypeOf(this))
 }
 /**
- * Add a tree. If the descendant's parent exists in this tree, the descendant
+ * Add a subtree. If the descendant's parent exists in this tree, the descendant
  * will be appended to it's parent. If the descendant's parent does not exist in
  * this tree, the descendant will be appended to this tree's root. If the
  * descendant is not an instance of Tree or it is an empty Tree, `this` will
  * be returned.
  *
- * @arg {Tree} descendant - The tree to add.
+ * @arg {Tree} descendant - The subtree to add.
  *
  * @return {Tree} A new instance of Tree containing the descendant.
  *

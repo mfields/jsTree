@@ -1,6 +1,6 @@
 # Tree
 
-This module exports a single constructor, `Tree()`, which can be used to create an immutable representation of a [general tree](https://opendsa-server.cs.vt.edu/ODSA/Books/Everything/html/GenTreeIntro.html). Please see the [API Documentation]([Tree()](./doc/api.md)) for usage information.
+This module exports a single constructor, `Tree()`, which can be used to create an immutable representation of a [general tree](https://opendsa-server.cs.vt.edu/ODSA/Books/Everything/html/GenTreeIntro.html). Please see the [API Documentation](https://github.com/mfields/jsTree/blob/master/doc/api.md) for usage information.
 
 ## Installation
 

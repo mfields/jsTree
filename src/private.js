@@ -35,7 +35,7 @@
  *   key. Defaults to `null`.
  * @arg {identifier} config.parent - The unique identifier of this
  *   tree's parent. Defaults to `null`.
- * @arg {Array} config.children - Zero or more trees to add as children.
+ * @arg {Tree[]} config.children - Zero or more trees to add as children.
  *   If a child's `parent` property is equal to `this.id` a reference will be
  *   saved. In the event that these two values do not match, a derivitive
  *   instance of the child will be created with its `parent` value modified to
@@ -143,7 +143,7 @@ function Tree (config) {
   /**
    * This tree's children represented as an array containing zero or more
    * `Tree` instances.
-   * @type {Array}
+   * @type {Tree[]}
    */
   this.children = children.value
 
@@ -373,7 +373,7 @@ Tree.prototype.sort = function (options) {
  *
  * Height reduction.
  *
- * @arg {Array} [trees = []] - A list of Tree instances each with a size of 1.
+ * @arg {Tree[]} [trees = []] - A list of Tree instances each with a size of 1.
  *   The behavior of this function is undefined when passed larger trees.
  * @arg {object} [options = {}] - Optional named parameters.
  * @arg {number} [options.height = 0] - Optional height. The height that the
@@ -407,7 +407,7 @@ Object.freeze(Tree)
 /**
  * Construct a list of General Trees.
  *
- * @arg {Array} trees
+ * @arg {Tree[]} trees
  * @arg {Null|Number|String} parent
  *
  * @return {List}
@@ -417,7 +417,7 @@ Object.freeze(Tree)
  *   @prop {Number} size Total number of valid trees in the list including
  *     subtrees. This value will always be greater than or equal to the value
  *     of length.
- *   @prop {Array} value A list of trees.
+ *   @prop {Tree[]} value A list of trees.
  *
  * @private
  * @since 1.0.0

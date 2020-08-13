@@ -8,7 +8,7 @@
         * _instance_
             * [.key](#module_@mfields/Tree..Tree+key) : <code>identifier</code>
             * [.parent](#module_@mfields/Tree..Tree+parent) : <code>identifier</code>
-            * [.children](#module_@mfields/Tree..Tree+children) : <code>Array</code>
+            * [.children](#module_@mfields/Tree..Tree+children) : <code>Array.&lt;Tree&gt;</code>
             * [.size](#module_@mfields/Tree..Tree+size) : <code>number</code>
             * [.add(descendant)](#module_@mfields/Tree..Tree+add) ⇒ <code>Tree</code>
             * [.delete(key)](#module_@mfields/Tree..Tree+delete) ⇒ <code>Tree</code>
@@ -35,7 +35,7 @@ Creates immutable objects that represent general trees.
     * _instance_
         * [.key](#module_@mfields/Tree..Tree+key) : <code>identifier</code>
         * [.parent](#module_@mfields/Tree..Tree+parent) : <code>identifier</code>
-        * [.children](#module_@mfields/Tree..Tree+children) : <code>Array</code>
+        * [.children](#module_@mfields/Tree..Tree+children) : <code>Array.&lt;Tree&gt;</code>
         * [.size](#module_@mfields/Tree..Tree+size) : <code>number</code>
         * [.add(descendant)](#module_@mfields/Tree..Tree+add) ⇒ <code>Tree</code>
         * [.delete(key)](#module_@mfields/Tree..Tree+delete) ⇒ <code>Tree</code>
@@ -77,7 +77,7 @@ a general tree.
   tree&#39;s parent. Defaults to <code>null</code>.</p>
 </td>
     </tr><tr>
-    <td>config.children</td><td><code>Array</code></td><td><p>Zero or more trees to add as children.
+    <td>config.children</td><td><code>Array.&lt;Tree&gt;</code></td><td><p>Zero or more trees to add as children.
   If a child&#39;s <code>parent</code> property is equal to <code>this.id</code> a reference will be
   saved. In the event that these two values do not match, a derivitive
   instance of the child will be created with its <code>parent</code> value modified to
@@ -171,7 +171,7 @@ This tree's parent's key.
 **Kind**: instance property of [<code>Tree</code>](#module_@mfields/Tree..Tree)  
 <a name="module_@mfields/Tree..Tree+children"></a>
 
-#### tree.children : <code>Array</code>
+#### tree.children : <code>Array.&lt;Tree&gt;</code>
 This tree's children represented as an array containing zero or more
 `Tree` instances.
 
@@ -364,7 +364,7 @@ Height reduction.
   </thead>
   <tbody>
 <tr>
-    <td>[trees]</td><td><code>Array</code></td><td><code>[]</code></td><td><p>A list of Tree instances each with a size of 1.
+    <td>[trees]</td><td><code>Array.&lt;Tree&gt;</code></td><td><code>[]</code></td><td><p>A list of Tree instances each with a size of 1.
   The behavior of this function is undefined when passed larger trees.</p>
 </td>
     </tr><tr>

@@ -9,8 +9,7 @@
     "doc": "jsdoc2md ./src/private.js --no-gfm > ./doc/api.md",
     "test": "NODE_ENV=test jest --coverage && standard",
     "test:mac": "karma start ./karma/mac.js",
-    "test:win": "karma ./karma/win.js",
-    "semantic-release": "semantic-release"
+    "test:win": "karma ./karma/win.js"
   },
   "repository": {
     "type": "git",

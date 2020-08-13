@@ -65,7 +65,8 @@ The following prototype methods exist:
  1. [`delete()`](https://github.com/mfields/jsTree/blob/master/doc/api.md#treedeletekey--tree) - Remove a node or branch from a tree.
  1. [`forEach()`](https://github.com/mfields/jsTree/blob/master/doc/api.md#treeforeachfunc-thisarg--undefined) - Execute a callback function on each subtree.
  1. [`get()`](https://github.com/mfields/jsTree/blob/master/doc/api.md#treegetkey--tree--null) - Return a reference to a subtree.
- 1. [`isEmpty()`](https://github.com/mfields/jsTree/blob/master/doc/api.md#treeisempty--boolean) - Does this tree contain all empty properties?
+  1. [`has()`](https://github.com/mfields/jsTree/blob/master/doc/api.md#treehaskey--boolean) - Does this tree contain a tree with a given key?
+ 1. [`isEmpty()`](https://github.com/mfields/jsTree/blob/master/doc/api.md#treeisempty--boolean) - Are all properties of this tree empty?
  1. [`sort()`](https://github.com/mfields/jsTree/blob/master/doc/api.md#treesortoptions--tree) - Recusively sort all children.
 
 Please see the [API Documentation](https://github.com/mfields/jsTree/blob/master/doc/api.md) for usage information.

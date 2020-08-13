@@ -300,6 +300,29 @@ Tree.prototype.get = function (key) {
   return output
 }
 /**
+ * Does this tree have a tree with a given key?
+ *
+ * The method will consider keys in `this` tree as well as all subtrees.
+ *
+ * @arg {identifier} key - The `key` of the tree to find.
+ * @return {boolean} `true` if the tree exists; `false` otherwise.
+ *
+ * @since 1.1.0
+ */
+Tree.prototype.has = function (key) {
+  var output = false
+
+  this.forEach(function (tree) {
+    if (tree.key === key) {
+      output = true
+      return true // break
+    }
+    return false // continue
+  })
+
+  return output
+}
+/**
  * Is this tree empty?
  *
  * An empty tree has the following properties:

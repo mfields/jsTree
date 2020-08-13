@@ -14,6 +14,7 @@
             * [.delete(key)](#module_@mfields/Tree..Tree+delete) ⇒ <code>Tree</code>
             * [.forEach(func, thisArg)](#module_@mfields/Tree..Tree+forEach) ⇒ <code>undefined</code>
             * [.get(key)](#module_@mfields/Tree..Tree+get) ⇒ <code>Tree</code> \| <code>null</code>
+            * [.has(key)](#module_@mfields/Tree..Tree+has) ⇒ <code>boolean</code>
             * [.isEmpty()](#module_@mfields/Tree..Tree+isEmpty) ⇒ <code>Boolean</code>
             * [.sort(options)](#module_@mfields/Tree..Tree+sort) ⇒ <code>Tree</code>
         * _static_
@@ -40,6 +41,7 @@ Creates immutable objects that represent general trees.
         * [.delete(key)](#module_@mfields/Tree..Tree+delete) ⇒ <code>Tree</code>
         * [.forEach(func, thisArg)](#module_@mfields/Tree..Tree+forEach) ⇒ <code>undefined</code>
         * [.get(key)](#module_@mfields/Tree..Tree+get) ⇒ <code>Tree</code> \| <code>null</code>
+        * [.has(key)](#module_@mfields/Tree..Tree+has) ⇒ <code>boolean</code>
         * [.isEmpty()](#module_@mfields/Tree..Tree+isEmpty) ⇒ <code>Boolean</code>
         * [.sort(options)](#module_@mfields/Tree..Tree+sort) ⇒ <code>Tree</code>
     * _static_
@@ -184,7 +186,7 @@ contained within this tree.
 <a name="module_@mfields/Tree..Tree+add"></a>
 
 #### tree.add(descendant) ⇒ <code>Tree</code>
-Add a tree. If the descendant's parent exists in this tree, the descendant
+Add a subtree. If the descendant's parent exists in this tree, the descendant
 will be appended to it's parent. If the descendant's parent does not exist in
 this tree, the descendant will be appended to this tree's root. If the
 descendant is not an instance of Tree or it is an empty Tree, `this` will
@@ -201,7 +203,7 @@ be returned.
   </thead>
   <tbody>
 <tr>
-    <td>descendant</td><td><code>Tree</code></td><td><p>The tree to add.</p>
+    <td>descendant</td><td><code>Tree</code></td><td><p>The subtree to add.</p>
 </td>
     </tr>  </tbody>
 </table>
@@ -270,6 +272,29 @@ Get reference to a subtree by key.
   <tbody>
 <tr>
     <td>key</td><td><code>identifier</code></td><td><p>The <code>key</code> value of the tree to return.</p>
+</td>
+    </tr>  </tbody>
+</table>
+
+<a name="module_@mfields/Tree..Tree+has"></a>
+
+#### tree.has(key) ⇒ <code>boolean</code>
+Does this tree have a tree with a given key?
+
+The method will consider keys in `this` tree as well as all subtrees.
+
+**Kind**: instance method of [<code>Tree</code>](#module_@mfields/Tree..Tree)  
+**Returns**: <code>boolean</code> - `true` if the tree exists; `false` otherwise.  
+**Since**: 1.1.0  
+<table>
+  <thead>
+    <tr>
+      <th>Param</th><th>Type</th><th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+<tr>
+    <td>key</td><td><code>identifier</code></td><td><p>The <code>key</code> of the tree to find.</p>
 </td>
     </tr>  </tbody>
 </table>

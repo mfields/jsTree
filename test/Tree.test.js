@@ -418,6 +418,30 @@ describe('Tree.prototype.get()', () => {
     expect(tree.get(7).key).toBe(7)
   })
 })
+describe('Tree.prototype.has()', () => {
+  it('is an immutable prototype method.', () => {
+    expect(typeof Tree().has).toBe('function')
+    expect(() => { Tree().has = '' }).toThrow()
+  })
+  it('recognizes itself.', () => {
+    expect(pbt3().has(1)).toBe(true)
+  })
+  it('recognizes subtrees.', () => {
+    var tree = pbt3()
+    expect(tree.has(2)).toBe(true)
+    expect(tree.has(3)).toBe(true)
+    expect(tree.has(4)).toBe(true)
+    expect(tree.has(5)).toBe(true)
+    expect(tree.has(6)).toBe(true)
+    expect(tree.has(7)).toBe(true)
+  })
+  it('ignores keys that do not exist in this.', () => {
+    var tree = pbt3()
+    expect(tree.has(8)).toBe(false)
+    expect(tree.has(-1)).toBe(false)
+    expect(tree.has('submarine')).toBe(false)
+  })
+})
 describe('Tree.prototype.isEmpty()', () => {
   it('is an immutable prototype method.', () => {
     expect(typeof Tree().isEmpty).toBe('function')

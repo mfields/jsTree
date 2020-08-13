@@ -1,20 +1,17 @@
 language: node_js
+node_js:
+  - stable
+  - lts/*
 cache:
   directories:
     - node_modules
 notifications:
   email: false
-node_js:
-  - stable
-  - lts/*
 jobs:
   include:
     - stage: release
-      deploy:
-        provider: script
-        script_cleanup: true
-        script:
-          - npm test
-        after_success:
-          - bash <(curl -s https://codecov.io/bash)
-          - npx semantic-release
+      script:
+        - npm test
+      after_success:
+        - bash <(curl -s https://codecov.io/bash)
+        - npx semantic-release

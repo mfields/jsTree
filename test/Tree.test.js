@@ -1,5 +1,4 @@
 import { Tree } from '../src/index.js'
-import { List } from '../src/private.js'
 import { expectEmpty, expectTree } from './helpers/expect.js'
 import { pbt2, pbt3 } from './helpers/data.js'
 

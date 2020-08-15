@@ -70,4 +70,3 @@ The following prototype methods exist:
  1. [`sort()`](https://github.com/mfields/jsTree/blob/master/doc/api.md#treesortoptions--tree) - Recusively sort all children.
 
 Please see the [API Documentation](https://github.com/mfields/jsTree/blob/master/doc/api.md) for usage information.
-

@@ -2,13 +2,13 @@ const { babel } = require('@rollup/plugin-babel')
 const commonjs = require('@rollup/plugin-commonjs')
 const { nodeResolve } = require('@rollup/plugin-node-resolve')
 
-function sharedConfig () {
+function legacyConfig () {
   return {
     basePath: '',
     frameworks: ['chai', 'mocha'],
     files: [
       '../src/*.js',
-      '../test/*.test.js'
+      '../test/*.legacy.test.js'
     ],
     exclude: [],
     preprocessors: {
@@ -24,8 +24,8 @@ function sharedConfig () {
     },
     customPreprocessors: {
       rollupTests: {
-				base: 'rollup',
-				options: {
+        base: 'rollup',
+        options: {
           plugins: [
             babel({
               babelHelpers: 'bundled',
@@ -41,9 +41,9 @@ function sharedConfig () {
             nodeResolve(),
             commonjs()
           ]
-				},
-			},
-		},
+        }
+      }
+    },
     plugins: ['karma-*'],
     reporters: ['progress'],
     port: 9876,
@@ -55,4 +55,13 @@ function sharedConfig () {
   }
 }
 
-module.exports = { sharedConfig }
+function modernConfig () {
+  const c = legacyConfig()
+  c.files = c.files.concat([
+    '../test/*.modern.test.js'
+  ])
+  c.preprocessors['../test/*.modern.test.js'] = ['rollupTests']
+  return c
+}
+
+module.exports = { modernConfig, legacyConfig }

@@ -1,7 +1,7 @@
-const { sharedConfig } = require('./shared.js')
+const { legacyConfig } = require('./shared.js')
 
 module.exports = function (config) {
-  const c = sharedConfig()
+  const c = legacyConfig()
   c.browsers = ['IE', 'IE10', 'IE9']
   c.logLevel = config.LOG_INFO
   c.customLaunchers = {

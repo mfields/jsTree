@@ -2,9 +2,7 @@ import { Tree } from '../src/index.js'
 import { expectEmpty, expectTree } from './helpers/expect.js'
 import { pbt2, pbt3 } from './helpers/data.js'
 
-const A = null // Short name for the id of the adopter tree.
 const N = null // Short name for null.
-const U = undefined // Short name for undefined.
 
 describe('Tree()', () => {
   it('is a function.', () => {
@@ -926,7 +924,7 @@ describe('Tree.fromArray(trees)', () => {
         var root = Tree({ key: 7 })
         var child = Tree({ key: 8 })
         var tree = Tree.fromArray([root, child])
-        expectTree(tree.get(A), A, N, 2, 3, 0)
+        expectTree(tree.get(N), N, N, 2, 3, 0)
         expectTree(tree.get(7), 7, N, 0, 1, 1)
         expectTree(tree.get(8), 8, N, 0, 1, 1)
     })
@@ -935,7 +933,7 @@ describe('Tree.fromArray(trees)', () => {
       var b = Tree({ key: 8, parent: 0 })
       var c = Tree({ key: 9, parent: 0 })
       var tree = Tree.fromArray([a, b, c])
-      expectTree(tree.get(A), A, N, 3, 4, 0)
+      expectTree(tree.get(N), N, N, 3, 4, 0)
       expectTree(tree.get(7), 7, N, 0, 1, 1)
       expectTree(tree.get(8), 8, N, 0, 1, 1)
       expectTree(tree.get(9), 9, N, 0, 1, 1)
@@ -947,7 +945,7 @@ describe('Tree.fromArray(trees)', () => {
       var d = Tree({ key: 9, parent: 0 })
       var tree = Tree.fromArray([a, b, c, d])
 
-      expectTree(tree.get(A), A, N, 4, 5, 0)
+      expectTree(tree.get(N), N, N, 4, 5, 0)
       expectTree(tree.get(6), 6, N, 0, 1, 1)
       expectTree(tree.get(7), 7, N, 0, 1, 1)
       expectTree(tree.get(8), 8, N, 0, 1, 1)
@@ -961,7 +959,7 @@ describe('Tree.fromArray(trees)', () => {
       var e = Tree({ key: 9, parent: 0 })
       var tree = Tree.fromArray([a, b, c, d, e])
 
-      expectTree(tree.get(A), A, N, 5, 6, 0)
+      expectTree(tree.get(N), N, N, 5, 6, 0)
       expectTree(tree.get(5), 5, N, 0, 1, 1)
       expectTree(tree.get(6), 6, N, 0, 1, 1)
       expectTree(tree.get(7), 7, N, 0, 1, 1)

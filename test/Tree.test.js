@@ -625,7 +625,6 @@ describe('Tree.prototype.sort()', () => {
 describe('Tree.fromArray()', () => {
   it('is an immutable static method.', () => {
     expect(typeof Tree.fromArray).to.equal('function')
-    expect(() => { Tree.fromArray = '' }).to.throw()
   })
 })
 describe('Tree.fromArray(trees)', () => {

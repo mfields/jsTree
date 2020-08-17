@@ -243,9 +243,8 @@ describe('Properties.', () => {
   })
 })
 describe('Tree.prototype.add()', () => {
-  it('is an immutable prototype method.', () => {
+  it('is prototype method.', () => {
     expect(typeof Tree().add).to.equal('function')
-    expect(() => { Tree().add = '' }).to.throw()
   })
   it('returns self when descendant in not an instance of Tree.', () => {
     var tree = Tree({ key: 99, parent: 86 })
@@ -328,9 +327,8 @@ describe('Tree.prototype.add()', () => {
   })
 })
 describe('Tree.prototype.delete()', () => {
-  it('is an immutable prototype method.', () => {
+  it('is aprototype method.', () => {
     expect(typeof Tree().delete).to.equal('function')
-    expect(() => { Tree().delete = '' }).to.throw()
   })
   it('removes a leaf.', () => {
     var a = pbt3()
@@ -402,9 +400,8 @@ describe('Tree.prototype.delete()', () => {
   })
 })
 describe('Tree.prototype.forEach()', () => {
-  it('is an immutable prototype method.', () => {
+  it('is a prototype method.', () => {
     expect(typeof Tree().forEach).to.equal('function')
-    expect(() => { Tree().forEach = '' }).to.throw()
   })
   it('iterates 3 times for tree with size of 3.', () => {
     var count = 0
@@ -435,9 +432,8 @@ describe('Tree.prototype.forEach()', () => {
   })
 })
 describe('Tree.prototype.get()', () => {
-  it('is an immutable prototype method.', () => {
+  it('is a prototype method.', () => {
     expect(typeof Tree().get).to.equal('function')
-    expect(() => { Tree().get = '' }).to.throw()
   })
   it('returns appropriate subtree.', () => {
     var tree = pbt3()
@@ -458,9 +454,8 @@ describe('Tree.prototype.get()', () => {
   })
 })
 describe('Tree.prototype.has()', () => {
-  it('is an immutable prototype method.', () => {
+  it('is a prototype method.', () => {
     expect(typeof Tree().has).to.equal('function')
-    expect(() => { Tree().has = '' }).to.throw()
   })
   it('recognizes itself.', () => {
     expect(pbt3().has(1)).to.equal(true)
@@ -482,9 +477,8 @@ describe('Tree.prototype.has()', () => {
   })
 })
 describe('Tree.prototype.isEmpty()', () => {
-  it('is an immutable prototype method.', () => {
+  it('is a prototype method.', () => {
     expect(typeof Tree().isEmpty).to.equal('function')
-    expect(() => { Tree().isEmpty = '' }).to.throw()
   })
   it('returns true for an empty tree.', () => {
     expect(Tree().isEmpty()).to.equal(true)
@@ -503,9 +497,8 @@ describe('Tree.prototype.isEmpty()', () => {
   })
 })
 describe('Tree.prototype.sort()', () => {
-  it('is an immutable prototype method.', () => {
+  it('is a prototype method.', () => {
     expect(typeof Tree().sort).to.equal('function')
-    expect(() => { Tree().sort = '' }).to.throw()
   })
   it('returns self when tree size is 1.', () => {
     var a = Tree()

@@ -1,14 +1,14 @@
-import { Tree } from '../../src/index.js'
-import { List } from '../../src/private.js'
+import { expect } from 'chai'
+import { Tree, List } from '../../src/private.js'
 
 export function expectClone(a, b) {
-  expect(a instanceof Tree).toBe(true)
-  expect(b instanceof Tree).toBe(true)
-  expect(a === b).toBe(false)
-  expect(a.key).toBe(b.key)
-  expect(a.parent).toBe(b.parent)
-  expect(a.size).toBe(b.size)
-  expect(a.children).toEqual(b.children)
+  expect(a instanceof Tree).to.equal(true)
+  expect(b instanceof Tree).to.equal(true)
+  expect(a === b).to.equal(false)
+  expect(a.key).to.equal(b.key)
+  expect(a.parent).to.equal(b.parent)
+  expect(a.size).to.equal(b.size)
+  expect(a.children).to.deep.equal(b.children)
 }
 
 export function expectEmpty (tree) {
@@ -16,11 +16,11 @@ export function expectEmpty (tree) {
 }
 
 export function expectTree(tree, key, parent, degree, size) {
-  expect(tree instanceof Tree).toBe(true)
-  expect(tree.key).toBe(key)
-  expect(tree.parent).toBe(parent)
-  expect(tree.children.length).toBe(degree)
-  expect(tree.size).toBe(size)
+  expect(tree instanceof Tree).to.equal(true)
+  expect(tree.key).to.equal(key)
+  expect(tree.parent).to.equal(parent)
+  expect(tree.children.length).to.equal(degree)
+  expect(tree.size).to.equal(size)
 }
 
 export function expectEmptyList (list) {
@@ -28,8 +28,8 @@ export function expectEmptyList (list) {
 }
 
 export function expectList (list, length, size, value) {
-  expect(list instanceof List).toBe(true)
-  expect(list.length).toBe(length)
-  expect(list.size).toBe(size)
-  expect(list.value).toEqual(value)
+  expect(list instanceof List).to.equal(true)
+  expect(list.length).to.equal(length)
+  expect(list.size).to.equal(size)
+  expect(list.value).to.deep.equal(value)
 }

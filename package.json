@@ -7,7 +7,8 @@
     "build": "npm run bundle && npm run doc",
     "bundle": "NODE_ENV=production ./node_modules/.bin/rollup -c",
     "doc": "jsdoc2md ./src/private.js --no-gfm > ./doc/api.md",
-    "test": "NODE_ENV=test jest --coverage && standard",
+    "test": "NODE_ENV=test mocha --require esm && standard",
+    "test:chrome": "karma start ./karma/chrome.js",
     "test:mac": "karma start ./karma/mac.js",
     "test:win": "karma ./karma/win.js"
   },
@@ -31,22 +32,22 @@
     "@rollup/plugin-babel": "^5.1.0",
     "@rollup/plugin-commonjs": "^14.0.0",
     "@rollup/plugin-node-resolve": "^8.4.0",
-    "babel-jest": "^26.3.0",
+    "chai": "4.2.0",
     "core-js": "^3.6.5",
     "cz-conventional-changelog": "3.2.0",
-    "jasmine": "3.6.1",
-    "jasmine-core": "^3.6.0",
-    "jest": "26.3.0",
+    "esm": "3.2.25",
     "jsdoc": "3.6.5",
     "jsdoc-to-markdown": "6.0.1",
     "karma": "^5.1.1",
+    "karma-chai": "0.1.0",
     "karma-chrome-launcher": "^3.1.0",
     "karma-firefox-launcher": "^1.3.0",
     "karma-ie-launcher": "^1.0.0",
-    "karma-jasmine": "^3.3.1",
+    "karma-mocha": "2.0.1",
     "karma-opera-launcher": "^1.0.0",
     "karma-rollup-preprocessor": "^7.0.5",
     "karma-safari-launcher": "^1.0.0",
+    "mocha": "8.1.1",
     "rollup": "^2.23.1",
     "rollup-plugin-terser": "^6.1.0",
     "standard": "14.3.4"
@@ -57,24 +58,6 @@
         "plugins": [
           "@babel/plugin-transform-modules-commonjs"
         ]
-      }
-    }
-  },
-  "jest": {
-    "transform": {
-      "^.+\\.js?$": "babel-jest"
-    },
-    "coverageDirectory": "./coverage/",
-    "collectCoverage": true,
-    "collectCoverageFrom": [
-      "src/private.js"
-    ],
-    "coverageThreshold": {
-      "global": {
-        "branches": 83,
-        "functions": 83,
-        "lines": 83,
-        "statements": 83
       }
     }
   },

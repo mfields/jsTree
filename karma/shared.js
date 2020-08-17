@@ -5,7 +5,7 @@ const { nodeResolve } = require('@rollup/plugin-node-resolve')
 function sharedConfig () {
   return {
     basePath: '',
-    frameworks: ['jasmine'],
+    frameworks: ['chai', 'mocha'],
     files: [
       '../src/*.js',
       '../test/*.test.js'
@@ -33,19 +33,11 @@ function sharedConfig () {
       ],
       output: {
         format: 'iife',
-        name: 'GeneralTree',
+        name: 'Tree',
         sourcemap: 'inline'
       }
     },
-    plugins: [
-      'karma-jasmine',
-      'karma-chrome-launcher',
-      'karma-firefox-launcher',
-      'karma-ie-launcher',
-      'karma-opera-launcher',
-      'karma-safari-launcher',
-      'karma-rollup-preprocessor'
-    ],
+    plugins: ['karma-*'],
     reporters: ['progress'],
     port: 9876,
     colors: true,

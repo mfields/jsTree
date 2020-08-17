@@ -160,7 +160,7 @@ function Tree (config) {
     this[key] = value
   }, this)
 
-  freeze (this)
+  freeze(this)
 }
 /**
  * Add a subtree. If the descendant's parent exists in this tree, the descendant

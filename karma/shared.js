@@ -13,30 +13,37 @@ function sharedConfig () {
     exclude: [],
     preprocessors: {
       '../src/*.js': ['rollup'],
-      '../test/*.test.js': ['rollup']
+      '../test/*.test.js': ['rollupTests']
     },
     rollupPreprocessor: {
-      plugins: [
-        babel({
-          babelHelpers: 'bundled',
-          exclude: [/node_modules/],
-          presets: [
-            ['@babel/preset-env', {
-              corejs: '3.6',
-              debug: true,
-              useBuiltIns: 'usage'
-            }]
-          ]
-        }),
-        nodeResolve(),
-        commonjs()
-      ],
       output: {
         format: 'iife',
         name: 'Tree',
         sourcemap: 'inline'
       }
     },
+    customPreprocessors: {
+      rollupTests: {
+				base: 'rollup',
+				options: {
+          plugins: [
+            babel({
+              babelHelpers: 'bundled',
+              exclude: [/node_modules/],
+              presets: [
+                ['@babel/preset-env', {
+                  corejs: '3.6',
+                  debug: true,
+                  useBuiltIns: 'usage'
+                }]
+              ]
+            }),
+            nodeResolve(),
+            commonjs()
+          ]
+				},
+			},
+		},
     plugins: ['karma-*'],
     reporters: ['progress'],
     port: 9876,

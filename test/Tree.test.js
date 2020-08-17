@@ -14,7 +14,9 @@ describe('Tree()', () => {
   })
   it('creates frozen instances.', () => {
     expect(Object.isFrozen(Tree())).to.equal(true)
-    expect(Object.isFrozen(Tree().__proto__.test)).to.equal(true)
+    if (typeof Tree().__proto__ === 'object') {
+      expect(Object.isFrozen(Tree().__proto__.test)).to.equal(true)
+    }
   })
   it('does not accidentally freeze the built-in Object prototype.', () => {
     expect(Object.isFrozen(Object.prototype)).to.equal(false)

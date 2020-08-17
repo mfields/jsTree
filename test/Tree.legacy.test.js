@@ -148,12 +148,6 @@ describe('Tree(props.*)', () => {
     expect(Object.isFrozen(t.array[0][0])).to.equal(true)
     expect(t.array[0][0].length).to.equal(3)
   })
-  it('may be a map.', () => {
-    expect(() => { Tree({ map: new Map() }) }).not.to.throw()
-  })
-  it('may be a map.', () => {
-    expect(() => { Tree({ set: new Set() }) }).not.to.throw()
-  })
   it('.', () => {
     var tree = Tree({ a: undefined })
     expect(Object.keys(tree).indexOf('a')).to.equal(-1)
@@ -238,8 +232,6 @@ describe('Tree.prototype.add()', () => {
     expect(tree.add(NaN) === tree).to.equal(true)
     expect(tree.add([]) === tree).to.equal(true)
     expect(tree.add({}) === tree).to.equal(true)
-    expect(tree.add(new Set()) === tree).to.equal(true)
-    expect(tree.add(new Map()) === tree).to.equal(true)
   })
   it('adds a dot to a dot.', () => {
     var $1 = Tree({ key: 1, parent: 0 })

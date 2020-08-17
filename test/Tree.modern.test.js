@@ -27,6 +27,12 @@ describe('Tree(props.*)', () => {
   it('may be a synbol.', () => {
     expect(() => { Tree({ symbol: Symbol() }) }).not.to.throw()
   })
+  it('may be a map.', () => {
+    expect(() => { Tree({ map: new Map() }) }).not.to.throw()
+  })
+  it('may be a set.', () => {
+    expect(() => { Tree({ set: new Set() }) }).not.to.throw()
+  })
 })
 describe('Properties.', () => {
   describe('key', () => {
@@ -44,9 +50,11 @@ describe('Properties.', () => {
   })
 })
 describe('Tree.prototype.add()', () => {
-  it('returns self when descendant is a symbol.', () => {
+  it('returns self when descendant is not an instance of Tree.', () => {
     var tree = Tree({ key: 99, parent: 86 })
     expect(tree.add(Symbol()) === tree).to.equal(true)
+    expect(tree.add(new Map()) === tree).to.equal(true)
+    expect(tree.add(new Set()) === tree).to.equal(true)
   })
 })
 describe('Tree.fromArray(trees)', () => {

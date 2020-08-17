@@ -10,7 +10,7 @@
     "test": "NODE_ENV=test mocha --require esm && standard",
     "test:chrome": "karma start ./karma/chrome.js",
     "test:mac": "karma start ./karma/mac.js",
-    "test:win": "karma ./karma/win.js"
+    "test:win": "karma start ./karma/win.js"
   },
   "repository": {
     "type": "git",

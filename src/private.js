@@ -13,12 +13,6 @@
  * A unique identifier for a tree.
  * @typedef {(null|number|string)} identifier
  */
-
-/**
- * The value of a tree's custom property.
- * @typedef {(bigint|boolean|number|string|symbol|undefined)} propValue
- */
-
 /**
  * Construct a general tree.
  *
@@ -40,8 +34,10 @@
  *   saved. In the event that these two values do not match, a derivitive
  *   instance of the child will be created with its `parent` value modified to
  *   equal `this.id`. Default value is an empty array.
- * @arg {propValue} config.* Zero or more custom properties may be added to the
- *   instance.
+ * @arg {*} config.* Zero or more custom properties may be added to the
+ *   instance. All values except `undefined` will be stored as properties
+ *   directly on the returned object. Properties with a value of `undefined`
+ *   will be ignored.
  *
  * @return {Tree} A new instance of Tree.
  *
@@ -125,7 +121,6 @@ function Tree (config) {
   var key = 'key' in config ? castId(config.key) : null
   var parent = 'parent' in config ? castId(config.parent) : null
   var children = 'children' in config ? List(config.children, key) : List()
-  var validTypes = ['bigint', 'boolean', 'number', 'string', 'symbol']
   var invalidKeys = ['key', 'parent', 'children', 'size']
 
   /**
@@ -158,16 +153,14 @@ function Tree (config) {
 
   Object.keys(config).forEach(function (key) {
     var value = config[key]
-    if (invalidKeys.indexOf(key) > -1) {
+    if (invalidKeys.indexOf(key) > -1 || typeof value === 'undefined') {
       return
     }
-    if (validTypes.indexOf(typeof value) > -1 || value === null) {
-      this[key] = value
-    }
+
+    this[key] = value
   }, this)
 
-  Object.freeze(this)
-  Object.freeze(Object.getPrototypeOf(this))
+  freeze (this)
 }
 /**
  * Add a subtree. If the descendant's parent exists in this tree, the descendant
@@ -652,6 +645,27 @@ function cloneTree (tree, override) {
   })
 
   return Tree(props)
+}
+/**
+ * Recursively freeze an object.
+ *
+ * @arg {*} o - The value to freeze.
+ * @return undefined
+ */
+function freeze (o) {
+  if (typeof o !== 'object') {
+    return
+  }
+
+  Object.getOwnPropertyNames(o).forEach(function (key) {
+    var value = o[key]
+    if (value && typeof value === 'object' && !(value instanceof Tree)) {
+      freeze(value)
+    }
+  })
+
+  Object.freeze(o)
+  Object.freeze(Object.getPrototypeOf(o))
 }
 function determineAncestry (tree, map, height) {
   tree = castObject(tree)

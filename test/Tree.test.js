@@ -10,12 +10,15 @@ describe('Tree()', () => {
   it('is a function.', () => {
     expect(typeof Tree).toBe('function')
   })
-  it('has frozen prototype', () => {
-    var node = new Tree({ key: 14 })
-    expect(() => { node.__proto__.test = '' }).toThrow()
-  })
   it('can be constructed without the "new" keyword.', () => {
     expect(() => { Tree() }).not.toThrow(Error)
+  })
+  it('creates frozen instances.', () => {
+    expect(Object.isFrozen(Tree())).toBe(true)
+    expect(Object.isFrozen(Tree().__proto__.test)).toBe(true)
+  })
+  it('does not accidentally freeze the built-in Object prototype.', () => {
+    expect(Object.isFrozen(Object.prototype)).toBe(false)
   })
   it('preserves node order after creation.', () => {
     var t = Tree({
@@ -113,10 +116,46 @@ describe('Tree(props.*)', () => {
     expect(() => { Tree({ string: 'Twilight Zone' }) }).not.toThrow()
     expect(() => { Tree({ symbol: Symbol() }) }).not.toThrow()
   })
-  it('unrecognized values do not throw an error.', () => {
-    expect(() => { Tree({ pojo: {} }) }).not.toThrow()
-    expect(() => { Tree({ array: [] }) }).not.toThrow()
-    expect(() => { Tree({ map: new Map }) }).not.toThrow()
+  it('may be a plain javascript object. Depth 1', () => {
+    var t = Tree({ pojo: { number: 1 } })
+    expect(Object.isFrozen(t.pojo)).toBe(true)
+    expect(t.pojo.number).toBe(1)
+  })
+  it('may be a plain javascript object. Depth 2', () => {
+    var t = Tree({ pojo: { numbers: { one: 1 } } })
+    expect(Object.isFrozen(t.pojo)).toBe(true)
+    expect(Object.isFrozen(t.pojo.numbers)).toBe(true)
+    expect(t.pojo.numbers.one).toBe(1)
+  })
+  it('may be a plain javascript object. Depth 3', () => {
+    var t = Tree({ pojo: { numbers: { integers: { one: 1 } } } })
+    expect(Object.isFrozen(t.pojo)).toBe(true)
+    expect(Object.isFrozen(t.pojo.numbers)).toBe(true)
+    expect(Object.isFrozen(t.pojo.numbers.integers)).toBe(true)
+    expect(t.pojo.numbers.integers.one).toBe(1)
+  })
+  it('may be an array. Depth 1', () => {
+    var t = Tree({ array: ['one', 'two', 'three'] })
+    expect(Object.isFrozen(t.array)).toBe(true)
+    expect(t.array.length).toBe(3)
+  })
+  it('may be an array. Depth 2', () => {
+    var t = Tree({ array: [['one', 'two', 'three']] })
+    expect(Object.isFrozen(t.array)).toBe(true)
+    expect(Object.isFrozen(t.array[0])).toBe(true)
+    expect(t.array[0].length).toBe(3)
+  })
+  it('may be an array. Depth 3', () => {
+    var t = Tree({ array: [[['one', 'two', 'three']]] })
+    expect(Object.isFrozen(t.array)).toBe(true)
+    expect(Object.isFrozen(t.array[0])).toBe(true)
+    expect(Object.isFrozen(t.array[0][0])).toBe(true)
+    expect(t.array[0][0].length).toBe(3)
+  })
+  it('may be a map.', () => {
+    expect(() => { Tree({ map: new Map() }) }).not.toThrow()
+  })
+  it('may be a map.', () => {
     expect(() => { Tree({ set: new Set() }) }).not.toThrow()
   })
   it('.', () => {

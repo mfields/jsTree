@@ -19,9 +19,9 @@
             * [.sort(options)](#module_@mfields/Tree..Tree+sort) ⇒ <code>Tree</code>
         * _static_
             * [.fromArray([trees], [options])](#module_@mfields/Tree..Tree.fromArray) ⇒ <code>Tree</code>
+    * [~freeze(o)](#module_@mfields/Tree..freeze) ⇒
     * [~comparator](#module_@mfields/Tree..comparator) : <code>function</code>
     * [~identifier](#module_@mfields/Tree..identifier) : <code>null</code> \| <code>number</code> \| <code>string</code>
-    * [~propValue](#module_@mfields/Tree..propValue) : <code>bigint</code> \| <code>boolean</code> \| <code>number</code> \| <code>string</code> \| <code>symbol</code> \| <code>undefined</code>
 
 <a name="module_@mfields/Tree..Tree"></a>
 
@@ -84,8 +84,10 @@ a general tree.
   equal <code>this.id</code>. Default value is an empty array.</p>
 </td>
     </tr><tr>
-    <td>config.*</td><td><code>propValue</code></td><td><p>Zero or more custom properties may be added to the
-  instance.</p>
+    <td>config.*</td><td><code>*</code></td><td><p>Zero or more custom properties may be added to the
+  instance. All values except <code>undefined</code> will be stored as properties
+  directly on the returned object. Properties with a value of <code>undefined</code>
+  will be ignored.</p>
 </td>
     </tr>  </tbody>
 </table>
@@ -381,6 +383,26 @@ Height reduction.
     </tr>  </tbody>
 </table>
 
+<a name="module_@mfields/Tree..freeze"></a>
+
+### @mfields/Tree~freeze(o) ⇒
+Recursively freeze an object.
+
+**Kind**: inner method of [<code>@mfields/Tree</code>](#module_@mfields/Tree)  
+**Returns**: undefined  
+<table>
+  <thead>
+    <tr>
+      <th>Param</th><th>Type</th><th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+<tr>
+    <td>o</td><td><code>*</code></td><td><p>The value to freeze.</p>
+</td>
+    </tr>  </tbody>
+</table>
+
 <a name="module_@mfields/Tree..comparator"></a>
 
 ### @mfields/Tree~comparator : <code>function</code>
@@ -408,11 +430,5 @@ parameter of [Array.prototype.sort()](https://developer.mozilla.org/en-US/docs/W
 
 ### @mfields/Tree~identifier : <code>null</code> \| <code>number</code> \| <code>string</code>
 A unique identifier for a tree.
-
-**Kind**: inner typedef of [<code>@mfields/Tree</code>](#module_@mfields/Tree)  
-<a name="module_@mfields/Tree..propValue"></a>
-
-### @mfields/Tree~propValue : <code>bigint</code> \| <code>boolean</code> \| <code>number</code> \| <code>string</code> \| <code>symbol</code> \| <code>undefined</code>
-The value of a tree's custom property.
 
 **Kind**: inner typedef of [<code>@mfields/Tree</code>](#module_@mfields/Tree)  

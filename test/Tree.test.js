@@ -166,9 +166,6 @@ describe('Tree(props.*)', () => {
 })
 describe('Properties.', () => {
   describe('children', () => {
-    it('is immutable.', () => {
-      expect(() => { Tree().children = '' }).to.throw()
-    })
     it('is an empty array for childless trees.', () => {
       expect(Tree().children).to.deep.equal([])
     })
@@ -181,9 +178,6 @@ describe('Properties.', () => {
     })
   })
   describe('key', () => {
-    it('is immutable.', () => {
-      expect(() => { Tree().key = '' }).to.throw()
-    })
     it(`is null when props.key is null.`, () => {
       expect(Tree({ key: null }).key).to.equal(null)
     })
@@ -206,9 +200,6 @@ describe('Properties.', () => {
     })
   })
   describe('parent', () => {
-    it('is immutable.', () => {
-      expect(() => { Tree().parent = '' }).to.throw()
-    })
     it(`is null when props.key is null.`, () => {
       expect(Tree({ parent: null }).parent).to.equal(null)
     })
@@ -231,9 +222,6 @@ describe('Properties.', () => {
     })
   })
   describe('size', () => {
-    it('is immutable.', () => {
-      expect(() => { Tree().size = '' }).to.throw()
-    })
     it('is zero for empty trees.', () => {
       expect(Tree().size).to.deep.equal(0)
     })

@@ -50,11 +50,9 @@ describe('Tree(props)', () => {
     expect(() => { Tree('abc') }).not.to.throw()
     expect(() => { Tree(NaN) }).not.to.throw()
     expect(() => { Tree(Infinity) }).not.to.throw()
+    expect(() => { Tree(Symbol()) }).not.to.throw()
     expect(() => { Tree([]) }).not.to.throw()
     expect(() => { Tree({}) }).not.to.throw()
-    if (typeof Symbol === 'function') {
-      expect(() => { Tree(Symbol()) }).not.to.throw()
-    }
   })
 })
 describe('Tree(props.key)', () => {
@@ -68,11 +66,9 @@ describe('Tree(props.key)', () => {
     expect(() => { Tree({ key: 'abc' }) }).not.to.throw()
     expect(() => { Tree({ key: NaN }) }).not.to.throw()
     expect(() => { Tree({ key: Infinity }) }).not.to.throw()
+    expect(() => { Tree({ key: Symbol() }) }).not.to.throw()
     expect(() => { Tree({ key: [] }) }).not.to.throw()
     expect(() => { Tree({ key: {} }) }).not.to.throw()
-    if (typeof Symbol === 'function') {
-      expect(() => { Tree({ key: Symbol() }) }).not.to.throw()
-    }
   })
 })
 describe('Tree(props.parent)', () => {
@@ -86,11 +82,9 @@ describe('Tree(props.parent)', () => {
     expect(() => { Tree({ parent: 'abc' }) }).not.to.throw()
     expect(() => { Tree({ parent: NaN }) }).not.to.throw()
     expect(() => { Tree({ parent: Infinity }) }).not.to.throw()
+    expect(() => { Tree({ parent: Symbol() }) }).not.to.throw()
     expect(() => { Tree({ parent: [] }) }).not.to.throw()
     expect(() => { Tree({ parent: {} }) }).not.to.throw()
-    if (typeof Symbol === 'function') {
-      expect(() => { Tree({ parent: Symbol() }) }).not.to.throw()
-    }
   })
 })
 describe('Tree(props.children)', () => {
@@ -104,11 +98,9 @@ describe('Tree(props.children)', () => {
     expect(() => { Tree({ children: 'abc' }) }).not.to.throw()
     expect(() => { Tree({ children: NaN }) }).not.to.throw()
     expect(() => { Tree({ children: Infinity }) }).not.to.throw()
+    expect(() => { Tree({ children: Symbol() }) }).not.to.throw()
     expect(() => { Tree({ children: [] }) }).not.to.throw()
     expect(() => { Tree({ children: {} }) }).not.to.throw()
-    if (typeof Symbol === 'function') {
-      expect(() => { Tree({ children: Symbol() }) }).not.to.throw()
-    }
   })
 })
 describe('Tree(props.*)', () => {
@@ -123,9 +115,7 @@ describe('Tree(props.*)', () => {
     expect(() => { Tree({ number: -Infinity }) }).not.to.throw()
     expect(() => { Tree({ number: NaN }) }).not.to.throw()
     expect(() => { Tree({ string: 'Twilight Zone' }) }).not.to.throw()
-    if (typeof Symbol === 'function') {
-      expect(() => { Tree({ symbol: Symbol() }) }).not.to.throw()
-    }
+    expect(() => { Tree({ symbol: Symbol() }) }).not.to.throw()
   })
   it('may be a plain javascript object. Depth 1', () => {
     var t = Tree({ pojo: { number: 1 } })
@@ -204,11 +194,9 @@ describe('Properties.', () => {
       expect(Tree({ key: false }).key).to.equal(null)
       expect(Tree({ key: [] / [] }).key).to.equal(null)
       expect(Tree({ key: 1 / 0 }).key).to.equal(null)
+      expect(Tree({ key: Symbol() }).key).to.equal(null)
       expect(Tree({ key: [] }).key).to.equal(null)
       expect(Tree({ key: {} }).key).to.equal(null)
-      if (typeof Symbol === 'function') {
-        expect(Tree({ key: Symbol() }).key).to.equal(null)
-      }
     })
   })
   describe('parent', () => {
@@ -228,11 +216,9 @@ describe('Properties.', () => {
       expect(Tree({ parent: false }).parent).to.equal(null)
       expect(Tree({ parent: [] / [] }).parent).to.equal(null)
       expect(Tree({ parent: 1 / 0 }).parent).to.equal(null)
+      expect(Tree({ parent: Symbol() }).parent).to.equal(null)
       expect(Tree({ parent: [] }).parent).to.equal(null)
       expect(Tree({ parent: {} }).parent).to.equal(null)
-      if (typeof Symbol === 'function') {
-        expect(Tree({ parent: Symbol() }).parent).to.equal(null)
-      }
     })
   })
   describe('size', () => {
@@ -257,13 +243,11 @@ describe('Tree.prototype.add()', () => {
     expect(tree.add(123) === tree).to.equal(true)
     expect(tree.add(Infinity) === tree).to.equal(true)
     expect(tree.add(NaN) === tree).to.equal(true)
+    expect(tree.add(Symbol()) === tree).to.equal(true)
     expect(tree.add([]) === tree).to.equal(true)
     expect(tree.add({}) === tree).to.equal(true)
     expect(tree.add(new Set()) === tree).to.equal(true)
     expect(tree.add(new Map()) === tree).to.equal(true)
-    if (typeof Symbol === 'function') {
-      expect(tree.add(Symbol()) === tree).to.equal(true)
-    }
   })
   it('adds a dot to a dot.', () => {
     var $1 = Tree({ key: 1, parent: 0 })
@@ -683,9 +667,7 @@ describe('Tree.fromArray(trees)', () => {
     expectEmpty(Tree.fromArray('abc'))
   })
   it('may not be a symbol.', () => {
-    if (typeof Symbol === 'function') {
-      expectEmpty(Tree.fromArray(Symbol()))
-    }
+    expectEmpty(Tree.fromArray(Symbol()))
   })
   it('may not be an object that is not an array.', () => {
     expectEmpty(Tree.fromArray({}))

@@ -1,7 +1,6 @@
 import { expect } from 'chai'
 import { Tree } from '../src/index.js'
-import { expectEmpty, expectTree } from './helpers/expect.js'
-import { pbt2, pbt3 } from './helpers/data.js'
+import { expectEmpty } from './helpers/expect.js'
 
 describe('Tree(props)', () => {
   it('may be a symbol.', () => {
@@ -41,9 +40,6 @@ describe('Properties.', () => {
     })
   })
   describe('parent', () => {
-    it(`is null when props.key is null.`, () => {
-      expect(Tree({ parent: null }).parent).to.equal(null)
-    })
     it(`is null when props.key is a symbol.`, () => {
       expect(Tree({ parent: Symbol() }).parent).to.equal(null)
     })
@@ -52,6 +48,7 @@ describe('Properties.', () => {
 describe('Tree.prototype.add()', () => {
   it('returns self when descendant is not an instance of Tree.', () => {
     var tree = Tree({ key: 99, parent: 86 })
+    expect(tree.add(123n) === tree).to.equal(true)
     expect(tree.add(Symbol()) === tree).to.equal(true)
     expect(tree.add(new Map()) === tree).to.equal(true)
     expect(tree.add(new Set()) === tree).to.equal(true)

@@ -1,115 +1,13 @@
-/** @module @mfields/Tree */
-
-/**
- * Specifies a function that defines the sort order. Functions of this type are passed as the [compareFunction](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort#Parameters)
- * parameter of [Array.prototype.sort()]{@link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort}.
- *
- * @callback comparator
- * @arg {Tree} a - The first tree for comparison.
- * @arg {Tree} b - The second tree for comparison.
- */
-
-/**
- * A unique identifier for a tree.
- * @typedef {(null|number|string)} identifier
- */
 /**
  * Construct a general tree.
  *
- * This constructor may be invoked with or without the `new` keyword to create
- * a general tree.
- *
- * @class
- * @classdesc Creates immutable objects that represent general trees.
- *
- * @arg {Object} config - Optional configuration object. If this parameter is
- *   not provided an empty tree will be constructed.
- * @arg {identifier} config.key - A unique identifier. A tree must not have an
- *   ancestor with the same key. Likewise, no two ancestors may share the same
- *   key. Defaults to `null`.
- * @arg {identifier} config.parent - The unique identifier of this
- *   tree's parent. Defaults to `null`.
- * @arg {Tree[]} config.children - Zero or more trees to add as children.
- *   If a child's `parent` property is equal to `this.id` a reference will be
- *   saved. In the event that these two values do not match, a derivitive
- *   instance of the child will be created with its `parent` value modified to
- *   equal `this.id`. Default value is an empty array.
- * @arg {*} config.* Zero or more custom properties may be added to the
- *   instance. All values except `undefined` will be stored as properties
- *   directly on the returned object. Properties with a value of `undefined`
- *   will be ignored.
+ * @arg {Object} config - Configuration object.
+ * @arg {number, string} config.key - A unique identifier.
+ * @arg {number, string} config.parent - The unique identifier of this tree's parent.
+ * @arg {Tree[]} config.children - Zero or more trees.
+ * @arg {*} config.* Zero or more custom properties.
  *
  * @return {Tree} A new instance of Tree.
- *
- * @example <caption>no parameters</caption>
- *
- * ```
- * const empty = Tree()
- *
- * console.log(empty.key) // null
- * console.log(empty.parent) // null
- * console.log(empty.children) // []
- * console.log(empty.size) // 0
- * console.log(empty.isEmpty()) // true
- * ```
- *
- * @example <caption>childless tree.</caption>
- *
- * ```
- * const childless = Tree({ key: 66, parent: 55 })
- *
- * console.log(childless.key) // 66
- * console.log(childless.parent) // 55
- * console.log(childless.children) // []
- * console.log(childless.size) // 1
- * console.log(childless.isEmpty()) // false
- * ```
- *
- * @example <caption>a perfect binary tree with height of 3.</caption>
- *
- * ```
- * const tree = Tree({ key: 1, children: [
- *   Tree({ key: 2, children: [
- *     Tree({ key: 4 }),
- *     Tree({ key: 5 })
- *   ]}),
- *   Tree({ key: 3, children: [
- *     Tree({ key: 6 }),
- *     Tree({ key: 7 })
- *   ]})
- * ]})
- *
- * // Root
- *   console.log(tree.key) // 1
- *   console.log(tree.parent) // null
- *   console.log(tree.size) // 7
- *
- * // Level 2
- *   console.log(tree.children[0].key) // 2
- *   console.log(tree.children[0].parent) // 1
- *   console.log(tree.children[0].size) // 3
- *
- *   console.log(tree.children[1].key) // 3
- *   console.log(tree.children[1].parent) // 1
- *   console.log(tree.children[1].size) // 3
- *
- * // Level 3
- *   console.log(tree.children[0].children[0].key) // 4
- *   console.log(tree.children[0].children[0].parent) // 2
- *   console.log(tree.children[0].children[0].size) // 1
- *
- *   console.log(tree.children[0].children[1].key) // 5
- *   console.log(tree.children[0].children[1].parent) // 2
- *   console.log(tree.children[0].children[1].size) // 1
- *
- *   console.log(tree.children[1].children[0].key) // 6
- *   console.log(tree.children[1].children[0].parent) // 3
- *   console.log(tree.children[1].children[0].size) // 1
- *
- *   console.log(tree.children[1].children[1].key) // 7
- *   console.log(tree.children[1].children[1].parent) // 3
- *   console.log(tree.children[1].children[1].size) // 1
- * ```
  */
 function Tree (config) {
   if (!(this instanceof Tree)) {
@@ -163,14 +61,9 @@ function Tree (config) {
   freeze(this)
 }
 /**
- * Add a subtree. If the descendant's parent exists in this tree, the descendant
- * will be appended to it's parent. If the descendant's parent does not exist in
- * this tree, the descendant will be appended to this tree's root. If the
- * descendant is not an instance of Tree or it is an empty Tree, `this` will
- * be returned.
+ * Add a subtree.
  *
  * @arg {Tree} descendant - The subtree to add.
- *
  * @return {Tree} A new instance of Tree containing the descendant.
  *
  * @since 1.0.0
@@ -205,10 +98,7 @@ Tree.prototype.add = function (descendant) {
 /**
  * Remove a subtree from this tree.
  *
- * In cases where the key of the root tree is provided in the `key` parameter,
- * an empty tree will be returned.
- *
- * @arg {identifier} key - The key of the tree to be deleted.
+ * @arg {number, string} key - The key of the tree to be deleted.
  * @return {Tree}
  *
  * @since 1.0.0
@@ -257,11 +147,11 @@ Tree.prototype.delete = function (key) {
 /**
  * Execute a given function once for each tree.
  *
- * This method works in a very similar fashion to [Array.prototype.forEach()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach)
- *
  * @param {function} func - The function to execute.
  * @param {object} thisArg - Value to use as `this` when executing callback.
  * @return {undefined}
+ *
+ * @since 1.0.0
  */
 Tree.prototype.forEach = function (func, thisArg) {
   var stop = func.call(thisArg, this, this.key)
@@ -274,7 +164,7 @@ Tree.prototype.forEach = function (func, thisArg) {
 /**
  * Get reference to a subtree by key.
  *
- * @arg {identifier} key - The `key` value of the tree to return.
+ * @arg {number, string} key - The `key` value of the tree to return.
  * @return {Tree|null} The requested tree, if it exists; null otherwise.
  *
  * @since 1.0.0
@@ -295,9 +185,7 @@ Tree.prototype.get = function (key) {
 /**
  * Does this tree have a tree with a given key?
  *
- * The method will consider keys in `this` tree as well as all subtrees.
- *
- * @arg {identifier} key - The `key` of the tree to find.
+ * @arg {number, string} key - The `key` of the tree to find.
  * @return {boolean} `true` if the tree exists; `false` otherwise.
  *
  * @since 1.1.0
@@ -318,16 +206,7 @@ Tree.prototype.has = function (key) {
 /**
  * Is this tree empty?
  *
- * An empty tree has the following properties:
- *
- * ```
- *   key: null
- *   parent: null
- *   children: []
- *   size: 0
- * ```
- *
- * @return {Boolean} `true` if empty; `false` otherwise.
+ * @return {boolean} `true` if empty; `false` otherwise.
  */
 Tree.prototype.isEmpty = function () {
   return this.size === 0 && Object.keys(this).length === 4
@@ -336,11 +215,8 @@ Tree.prototype.isEmpty = function () {
  * Recusively sort all children.
  *
  * @arg {object} options Optional sort configuration.
- * @arg {comparator} [options.comparator] Custom sort function. Defaults to
- *   sorting by `key` in ascending order.
- * @arg {boolean} [options.deep = true] Should all trees be sorted? When `true`
- *   this tree's children and all of its subtrees will be sorted. When `false`
- *   only this tree's children will be sorted.
+ * @arg {comparator} [options.comparator] Custom sort function.
+ * @arg {boolean} [options.deep = true] Should all trees be sorted?
  *
  * @return {Tree}
  */
@@ -362,16 +238,9 @@ Tree.prototype.sort = function (options) {
 /**
  * Create a new tree from an array of trees.
  *
- * Orphan collection.
- *
- * Height reduction.
- *
- * @arg {Tree[]} [trees = []] - A list of Tree instances each with a size of 1.
- *   The behavior of this function is undefined when passed larger trees.
+ * @arg {Tree[]} [trees = []] - A list of Tree instances.
  * @arg {object} [options = {}] - Optional named parameters.
- * @arg {number} [options.height = 0] - Optional height. The height that the
- *   generated tree is allowed grow to. If defined, this value must be an
- *   integer greater than 1.
+ * @arg {number} [options.height = 0] - Tree cannot grow beyond this value.
  * @arg {comparator} [options.comparator] Optional sort function.
  *
  * @return {Tree} A composite tree containing all trees represented in the

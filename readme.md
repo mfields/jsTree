@@ -10,6 +10,13 @@ __Features:__
  * Written in ES5 - no transpiling necessary.
  * Works in all major modern browsers and IE9+.
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg?style=flat-square)](http://commitizen.github.io/cz-cli/)
+[![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg?style=flat-square)](https://standardjs.com)
+[![GitHub version](https://badge.fury.io/gh/Naereen%2FStrapDown.js.svg)](https://github.com/Naereen/StrapDown.js)
+[![npm version](https://badge.fury.io/js/%40mfields%2Ftree.svg)](https://badge.fury.io/js/%40mfields%2Ftree)
+
+
 ## Installation
 
 ```

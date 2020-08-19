@@ -1,14 +1,16 @@
+import commonjs from '@rollup/plugin-commonjs'
 import { terser } from 'rollup-plugin-terser'
 
 export default [
   {
-    input: 'src/index.js',
+    input: 'index.js',
     output: {
-      file: 'dist/tree.cjs.js',
-      format: 'cjs',
+      file: 'dist/tree.esm.js',
+      format: 'es',
       name: 'Tree'
     },
     plugins: [
+      commonjs(),
       terser({
         mangle: {
           reserved: ['Tree']

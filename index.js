@@ -563,4 +563,4 @@ function determineAncestry (tree, map, height) {
   return ancestry
 }
 
-module.exports = { Tree }
+exports.Tree = Tree

@@ -1,11 +1,11 @@
-import { Tree } from '../../index.js'
+const { Tree } = require('../../index.js')
 
 /**
  * Perfect binary tree with height of 2 ordered by key, ascending.
  *
  * @return {Tree}
  */
-export function pbt2 () {
+function pbt2 () {
   return Tree({ key: 1, children: [
     Tree({ key: 2 }),
     Tree({ key: 3 })
@@ -16,7 +16,7 @@ export function pbt2 () {
  *
  * @return {Tree}
  */
-export function pbt3 () {
+function pbt3 () {
   return Tree({ key: 1, children: [
     Tree({ key: 2, children: [
       Tree({ key: 4 }),
@@ -28,3 +28,5 @@ export function pbt3 () {
     ]})
   ]})
 }
+
+module.exports = { pbt2, pbt3 }

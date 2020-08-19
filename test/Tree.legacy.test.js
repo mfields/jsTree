@@ -1,7 +1,7 @@
-import { expect } from 'chai'
-import { Tree } from '../index.js'
-import { expectEmpty, expectTree } from './helpers/expect.js'
-import { pbt2, pbt3 } from './helpers/data.js'
+const { expect } = require('chai')
+const { Tree } = require('../index.js')
+const { expectEmpty, expectTree } = require('./helpers/expect.js')
+const { pbt2, pbt3 } = require('./helpers/data.js')
 
 const N = null // Short name for null.
 

@@ -14,6 +14,7 @@ __Features:__
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 [![npm version](https://badge.fury.io/js/%40mfields%2Ftree.svg)](https://badge.fury.io/js/%40mfields%2Ftree)
+[![install size](https://packagephobia.com/badge?p=@mfields/tree)](https://packagephobia.com/result?p=@mfields/tree)
 
 
 ## Installation

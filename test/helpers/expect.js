@@ -1,5 +1,5 @@
 import { expect } from 'chai'
-import { Tree, List } from '../../src/private.js'
+import { Tree } from '../../src/private.js'
 
 export function expectClone(a, b) {
   expect(a instanceof Tree).to.equal(true)
@@ -21,15 +21,4 @@ export function expectTree(tree, key, parent, degree, size) {
   expect(tree.parent).to.equal(parent)
   expect(tree.children.length).to.equal(degree)
   expect(tree.size).to.equal(size)
-}
-
-export function expectEmptyList (list) {
-  expectList (list, 0, 0, [])
-}
-
-export function expectList (list, length, size, value) {
-  expect(list instanceof List).to.equal(true)
-  expect(list.length).to.equal(length)
-  expect(list.size).to.equal(size)
-  expect(list.value).to.deep.equal(value)
 }

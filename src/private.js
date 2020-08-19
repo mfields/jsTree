@@ -563,4 +563,4 @@ function determineAncestry (tree, map, height) {
   return ancestry
 }
 
-export { Tree, List, cloneTree }
+export { Tree }

@@ -1,4 +1,4 @@
-import { Tree } from '../../src/index.js'
+import { Tree } from '../../index.js'
 
 /**
  * Perfect binary tree with height of 2 ordered by key, ascending.

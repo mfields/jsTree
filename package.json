@@ -2,7 +2,7 @@
   "name": "@mfields/tree",
   "version": "1.1.1",
   "description": "Create immutable tree instances.",
-  "main": "./dist/tree.cjs.js",
+  "main": "./index.js",
   "scripts": {
     "build": "npm run bundle",
     "bundle": "NODE_ENV=production ./node_modules/.bin/rollup -c",

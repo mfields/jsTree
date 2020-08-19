@@ -1,5 +1,5 @@
 import { expect } from 'chai'
-import { Tree } from '../src/index.js'
+import { Tree } from '../index.js'
 import { expectEmpty } from './helpers/expect.js'
 
 describe('Tree(props)', () => {

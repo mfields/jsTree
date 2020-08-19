@@ -1,5 +1,5 @@
 import { expect } from 'chai'
-import { Tree } from '../src/index.js'
+import { Tree } from '../index.js'
 import { expectEmpty, expectTree } from './helpers/expect.js'
 import { pbt2, pbt3 } from './helpers/data.js'
 

@@ -1,5 +1,5 @@
 import { expect } from 'chai'
-import { Tree } from '../../src/private.js'
+import { Tree } from '../../index.js'
 
 export function expectClone(a, b) {
   expect(a instanceof Tree).to.equal(true)

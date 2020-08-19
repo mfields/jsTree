@@ -6,7 +6,7 @@
   "scripts": {
     "build": "npm run bundle",
     "bundle": "NODE_ENV=production ./node_modules/.bin/rollup -c",
-    "test": "NODE_ENV=test mocha --require esm && standard",
+    "test": "NODE_ENV=test mocha && standard",
     "test:chrome": "karma start ./karma/chrome.js",
     "test:ie": "karma start ./karma/ie.js",
     "test:mac": "karma start ./karma/mac.js",
@@ -35,7 +35,6 @@
     "chai": "4.2.0",
     "core-js": "^3.6.5",
     "cz-conventional-changelog": "3.2.0",
-    "esm": "3.2.25",
     "karma": "^5.1.1",
     "karma-chai": "0.1.0",
     "karma-chrome-launcher": "^3.1.0",

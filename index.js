@@ -21,30 +21,9 @@ function Tree (config) {
   var children = 'children' in config ? List(config.children, key) : List()
   var invalidKeys = ['key', 'parent', 'children', 'size']
 
-  /**
-   * This tree's unique identifier.
-   * @type {identifier}
-   */
   this.key = key
-
-  /**
-   * This tree's parent's key.
-   * @type {identifier}
-   */
   this.parent = parent
-
-  /**
-   * This tree's children represented as an array containing zero or more
-   * `Tree` instances.
-   * @type {Tree[]}
-   */
   this.children = children.value
-
-  /**
-   * A whole number representing the total number of trees (root + all subtrees)
-   * contained within this tree.
-   * @type {number}
-   */
   this.size = key !== null || parent !== null || children.length > 0
     ? 1 + children.size
     : 0

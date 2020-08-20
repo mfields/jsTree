@@ -25,8 +25,14 @@ npm install @mfields/tree
 
 ## Usage
 
+As a CommonJS module:
 ```
 const { Tree } = require('@mfields/tree')
+```
+
+As an ES6 module:
+```
+import { Tree } from '@mfields/tree/dist/tree.esm.js'
 ```
 
 ## API Documentation

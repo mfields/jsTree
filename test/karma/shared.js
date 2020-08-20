@@ -7,13 +7,13 @@ function legacyConfig () {
     basePath: '',
     frameworks: ['chai', 'mocha'],
     files: [
-      '../src/*.js',
-      '../test/*.legacy.test.js'
+      '../../src/*.js',
+      '../../test/*.legacy.test.js'
     ],
     exclude: [],
     preprocessors: {
-      '../src/*.js': ['rollup'],
-      '../test/*.test.js': ['rollupTests']
+      '../../src/*.js': ['rollup'],
+      '../../test/*.test.js': ['rollupTests']
     },
     rollupPreprocessor: {
       output: {
@@ -27,6 +27,8 @@ function legacyConfig () {
         base: 'rollup',
         options: {
           plugins: [
+            commonjs(),
+            nodeResolve(),
             babel({
               babelHelpers: 'bundled',
               exclude: [/node_modules/],
@@ -37,9 +39,7 @@ function legacyConfig () {
                   useBuiltIns: 'usage'
                 }]
               ]
-            }),
-            nodeResolve(),
-            commonjs()
+            })
           ]
         }
       }
@@ -58,9 +58,9 @@ function legacyConfig () {
 function modernConfig () {
   const c = legacyConfig()
   c.files = c.files.concat([
-    '../test/*.modern.test.js'
+    '../../test/*.modern.test.js'
   ])
-  c.preprocessors['../test/*.modern.test.js'] = ['rollupTests']
+  c.preprocessors['../../test/*.modern.test.js'] = ['rollupTests']
   return c
 }
 

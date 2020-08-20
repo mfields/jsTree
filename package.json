@@ -7,10 +7,10 @@
     "build": "npm run bundle",
     "bundle": "NODE_ENV=production ./node_modules/.bin/rollup -c",
     "test": "NODE_ENV=test mocha && standard",
-    "test:chrome": "karma start ./karma/chrome.js",
-    "test:ie": "karma start ./karma/ie.js",
-    "test:mac": "karma start ./karma/mac.js",
-    "test:win": "karma start ./karma/win.js"
+    "test:chrome": "karma start ./test/karma/chrome.js",
+    "test:ie": "karma start ./test/karma/ie.js",
+    "test:mac": "karma start ./test/karma/mac.js",
+    "test:win": "karma start ./test/karma/win.js"
   },
   "repository": {
     "type": "git",
